@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Importar PDF</title>
+</head>
+<body>
+    <h1>Importar PDF</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="pdf_files" multiple>
+        <button type="submit">Importar</button>
+    </form>
+</body>
+</html>

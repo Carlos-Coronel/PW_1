@@ -1,8 +1,8 @@
-
 from django.shortcuts import render, redirect
 from .models import PDF
 import PyPDF2
 import re
+
 
 def import_success(request):
     return render(request, 'import_success.html')
@@ -13,15 +13,12 @@ def importar_pdf(request):
         pdf_files = request.FILES.getlist('pdf_files')
 
         for pdf_file in pdf_files:
-            pdf_reader = PyPDF2.PdfReader(pdf_file)
-            page = pdf_reader.pages[0]
-            text = page.extract_text()
+            with pdf_file.open(mode='rb') as file:
+                pdf_reader = PyPDF2.PdfReader(file)
+                page = pdf_reader.pages[0]
+                text = page.extract_text()
 
             nombre_archivo = pdf_file.name
-            materia = None
-            codigo = None
-            carrera = None
-            objetivos_text = None
 
             # Extraer datos del PDF
             materia_match = re.search(r'Nombre\s*de\s*la\s*Materia\s*:\s*(.*)', text)
@@ -45,4 +42,3 @@ def importar_pdf(request):
 
         return redirect('import_success')
     return render(request, 'import_pdf.html')
-

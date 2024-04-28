@@ -1,0 +1,149 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+
+/* Estilos para la página */
+@page {
+    size: A4;
+    background-color: #fff;
+    padding-top: 12px ;
+}
+
+@page :first {
+    margin-top: 50mm;
+    @top-left {
+        content: url("/static/img/Logo2.png");
+        text-align: center;
+    }
+    @top-center {
+        content: element(header);
+    }
+    @top-right {
+        content: url("/static/img/Logo.png");
+    }
+    border-top: 3px solid #555;
+}
+
+@page :nth(n+2) {
+    margin-top: 11.5mm;
+
+    @top-center {
+        content: element(header2);
+    }
+    border-top: 2px solid #555;
+
+}
+
+.header {
+    position: running(header);
+}
+
+.header2 {
+    position: running(header2);
+}
+
+.left-span {
+    position: absolute;
+    left: 100px;
+    font-size: 11px;
+}
+
+.right-span {
+    position: absolute;
+    right: 100px;
+    font-size: 11px;
+}
+
+/* Estilos para cada página */
+.pagedjs_page {
+    margin-bottom: 20px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilos para la paginación */
+
+.pagedjs_margin-bottom::after {
+    content: "Página " counter(page);
+    position: absolute;
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+    width: 76%;
+}
+
+
+/* Estilos para el contenedor de la paginación */
+
+.pagedjs_margin-bottom {
+    border-top: 2px solid #555;
+}
+
+/* Estilo para el contenido */
+.content {
+    padding: 20px; /* Espacio alrededor del contenido */
+}
+
+/* Estilo para títulos */
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para párrafos */
+p {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Estilo para imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Estilo para enlaces */
+a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Estilo para enlaces visitados */
+a:visited {
+    color: #4e4e4e;
+}
+
+/* Estilo para enlaces al pasar el ratón */
+a:hover {
+    color: #0056b3;
+}
+
+.identification-table p {
+    margin: 5px 20px;
+}
+
+/* Estilo para la tabla de identificación */
+.identification-table {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el título */
+.identification-table p span {
+    width: 200px;
+    display: inline-block;
+}
+

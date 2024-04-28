@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nombre_archivo }}</title>
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+    <script src="{% static 'js/pagedjs_custom.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<!-- Contenedor de la hoja -->
+<div class="sheet-container">
+    <!-- Contenido -->
+    <div class="content">
+        <!-- Contenido de la página 1 -->
+        <div class="page">
+            <h2>Identificación</h2>
+            <div class="identification-table">
+                <p><span>A. Nombre de la Materia</span>:{{ identificacion.nombre }}</p>
+                <p><span>B. Código</span>:{{ identificacion.codigo }}</p>
+                <p><span>C. Condición</span>:{{ identificacion.condicion }}</p>
+                <p><span>D. Carrera</span>:{{ identificacion.carrera }}</p>
+                <p><span>E. Curso</span>:{{ identificacion.curso }}</p>
+                <p><span>F. Semestre</span>:{{ identificacion.semestre }}</p>
+                <p><span>G. Requisitos</span>:{{ identificacion.requisitos }}</p>
+                <p><span>H. Cargar horaria semanal</span>:{{ identificacion.cargaSemanal }}</p>
+                <p><span>I. Cargar horaria semestral</span>:{{ identificacion.cargaSemestral }}</p>
+            </div>
+            {% for seccion_titulo, seccion_contenido in secciones.items %}
+                <h2>{{ seccion_titulo }}</h2>
+                <p>{{ seccion_contenido|safe }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
